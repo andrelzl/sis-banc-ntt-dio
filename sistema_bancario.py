@@ -26,40 +26,38 @@ while True:
             Saldo += Deposito
             Numero_depositos += 1
         else:
-            print("Valor informado não é válido, por favor, tente novamente!")
+            print("Valor não permitido, tente novamente!")
 
     elif Opcao == 2:
 
         Saque = float(input("Digite o valor desejado para saque:"))
 
         if Numero_saques == Limite_saques:
-            print("Operação falhou! Número máximo de saques excedido.")
+            print("Limite de saque já excedido. Tente novamente amanhã.")
        
         elif (Saque < Saldo) and (Saque < Valor_Limite_Saque) and (Numero_saques < Limite_saques):
             Saldo -= Saque
             Numero_saques += 1
         
         elif Saque > Saldo:
-            print("Operação falhou! Você não tem saldo suficiente.")
+            print("Saldo insuficiente para efetuar operação!")
 
         elif Saque > Valor_Limite_Saque:
-            print("Operação falhou! O valor do saque excede o limite.")
+            print("Saque excede o limite de R$:500, escolha um valor igual ou menor")
         
-
     elif Opcao == 3:
         print("Seu extrato está assim:")
         print(f"Seu saldo é de: R${Saldo:.2f}")
 
-        if Numero_saques >= 1 and Numero_depositos >= 1 :
+        if Numero_saques >= 1 or Numero_depositos >= 1 :
             print(f"Foram Realizados {Numero_saques} saques e {Numero_depositos} depositos hoje!")
 
         else:
-            print("Não foram realizados movimentações hoje!")
+            print("Não foi detectado nenhum saque ou deposito hoje.")
         
-
     elif Opcao == 4:
         print("Até mais!")
         break
 
     else:
-        print("Opção invalida, por favor selecione novamente a operação desejada.")
+        print("Nenhuma operação valida foi selecionada, tente novamente.")
